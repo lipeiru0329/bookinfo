@@ -49,4 +49,6 @@ spec:
       volumes:
       - name: tmp
         emptyDir: {}
+      dnsPolicy: Default
+
 ---
