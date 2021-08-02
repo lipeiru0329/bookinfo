@@ -7,8 +7,8 @@ metadata:
     service: ratings
 spec:
   ports:
-  - port: 9080
-    name: http
+    - port: 9080
+      name: http
   selector:
     app: ratings
 ---
@@ -29,14 +29,16 @@ spec:
         app: ratings
     spec:
       containers:
-      - name: ratings
-        image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/ratings
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 9080
-        readinessProbe:
-          tcpSocket:
-            port: 9080
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: ratings
+          image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/ratings
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9080
+          readinessProbe:
+            tcpSocket:
+              port: 9080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      dnsPolicy: Default
 ---
+
