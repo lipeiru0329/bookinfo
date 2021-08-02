@@ -7,8 +7,8 @@ metadata:
     service: productpage
 spec:
   ports:
-  - port: 9080
-    name: http
+    - port: 9080
+      name: http
   selector:
     app: productpage
 ---
@@ -32,23 +32,24 @@ spec:
         app: productpage
     spec:
       containers:
-      - name: productpage
-        image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/productpage
-        imagePullPolicy: IfNotPresent
-        command: ['python', 'productpage.py', '9080']
-        ports:
-        - containerPort: 9080
-        readinessProbe:
-          tcpSocket:
-            port: 9080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        volumeMounts:
-        - name: tmp
-          mountPath: /tmp
+        - name: productpage
+          image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/productpage
+          imagePullPolicy: IfNotPresent
+          command: ["python", "productpage.py", "9080"]
+          ports:
+            - containerPort: 9080
+          readinessProbe:
+            tcpSocket:
+              port: 9080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
       volumes:
-      - name: tmp
-        emptyDir: {}
-      dnsPolicy: Default
+        - name: tmp
+          emptyDir: {}
+      # dnsPolicy: Default
 
 ---
+
