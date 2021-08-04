@@ -11,7 +11,7 @@
           - 29080:19080
       dev:
         gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
-        image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/python:3.7.7-slim-productpage
+        image: tudouaidigua/productage:0.1
         shell: bash
         workDir: /home/nocalhost-dev
         sync: 
