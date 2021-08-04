@@ -10,7 +10,7 @@
           - 39080:9080
           - 29080:19080
       dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-productpage.git
+        gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
         image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/python:3.7.7-slim-productpage
         shell: bash
         workDir: /home/nocalhost-dev
@@ -29,7 +29,7 @@
   serviceType: deployment
   containers:
     - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-details.git
+        gitUrl: https://github.com/lipeiru0329/bookinfo-details.git
         image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/ruby:2.7.1-slim
         shell: bash
         workDir: /home/nocalhost-dev
@@ -53,7 +53,7 @@
       - "dep-job"
   containers:
     - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-ratings.git
+        gitUrl: https://github.com/lipeiru0329/bookinfo-ratings.git
         image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/node:12.18.1-slim
         shell: bash
         workDir: /home/nocalhost-dev
@@ -91,7 +91,7 @@
       - "productpage"
   containers:
     - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-reviews.git
+        gitUrl: https://github.com/lipeiru0329/bookinfo-reviews.git
         image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/java:latest
         shell: bash
         workDir: /home/nocalhost-dev
