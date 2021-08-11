@@ -15,7 +15,7 @@
         shell: bash
         workDir: /home/nocalhost-dev
         sync: 
-          type: send
+          type: sendreceive
           filePattern: 
             - ./
           ignoreFilePattern:
