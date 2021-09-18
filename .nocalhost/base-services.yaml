@@ -1,3 +1,30 @@
+- name: backend
+  serviceType: deployment
+  dependLabelSelector: 
+    jobs:
+      - "dep-job"
+  containers:
+    - name: backend
+      install: 
+        portForward:   
+          - 38080:80
+          - 29080:19080
+      dev:
+        gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
+        image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v3
+        shell: bash
+        workDir: /data/home/user00
+        sync: 
+          type: sendreceive
+          filePattern: 
+            - ./
+          ignoreFilePattern:
+            - ".git"
+            - ".github"
+            - ".idea"
+        portForward:
+        - 38080:80
+        - 29080:19080
 - name: productpage
   serviceType: deployment
   dependLabelSelector: 

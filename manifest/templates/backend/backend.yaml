@@ -35,7 +35,7 @@ spec:
         - name: backend
           image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v3
           imagePullPolicy: IfNotPresent
-          command: ["python", "backend.py", "9080"]
+          command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g \"daemon off;\"']
           ports:
             - containerPort: 80
           readinessProbe:
