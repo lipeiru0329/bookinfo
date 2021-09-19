@@ -37,10 +37,10 @@ spec:
           imagePullPolicy: IfNotPresent
           command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g \"daemon off;\"']
           ports:
-            - containerPort: 8080
+            - containerPort: 9080
           readinessProbe:
             tcpSocket:
-              port: 8080
+              port: 9080
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
