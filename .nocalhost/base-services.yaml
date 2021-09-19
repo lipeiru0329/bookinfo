@@ -7,7 +7,7 @@
     - name: backend
       install: 
         portForward:   
-          - 38080:80
+          - 38080:8080
           - 29080:19080
       dev:
         gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
@@ -23,7 +23,7 @@
             - ".github"
             - ".idea"
         portForward:
-        - 38080:80
+        - 38080:8080
         - 29080:19080
 - name: productpage
   serviceType: deployment

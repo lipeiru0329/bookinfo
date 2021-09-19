@@ -7,7 +7,7 @@ metadata:
     service: backend
 spec:
   ports:
-    - port: 80
+    - port: 8080
       name: http
   selector:
     app: backend
@@ -37,10 +37,10 @@ spec:
           imagePullPolicy: IfNotPresent
           command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g \"daemon off;\"']
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           readinessProbe:
             tcpSocket:
-              port: 80
+              port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
