@@ -35,7 +35,9 @@ spec:
         - name: backend
           image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
           imagePullPolicy: IfNotPresent
-          command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g \"daemon off;\"']
+          command: ["/usr/sbin/init", "-c","--"]
+          securityContext:
+            privileged: true
           ports:
             - containerPort: 9080
           readinessProbe:
@@ -46,8 +48,6 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
-          securityContext:
-            privileged: true
       volumes:
         - name: tmp
           emptyDir: {}

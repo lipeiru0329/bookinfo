@@ -12,6 +12,7 @@
       dev:
         gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
         image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
+        command: ["/usr/sbin/init", "-c","--"]
         securityContext:
           privileged: true
         shell: bash
