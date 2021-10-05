@@ -12,6 +12,8 @@
       dev:
         gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
         image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
+        securityContext:
+          privileged: true
         shell: bash
         workDir: /data/home/user00/test
         sync: 
