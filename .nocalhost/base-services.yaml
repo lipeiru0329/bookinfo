@@ -13,7 +13,7 @@
         gitUrl: https://github.com/lipeiru0329/bookinfo-productpage.git
         image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
         shell: bash
-        workDir: /data/home/user00
+        workDir: /data/home/user00/test
         sync: 
           type: sendreceive
           filePattern: 
