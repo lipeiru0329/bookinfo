@@ -5,7 +5,7 @@ configProperties:
 application:
   name: bookinfo
   manifestType: rawManifest
-  resourcePath: ["manifest/templates"]
+  resourcePath: ["intl/nocalhost"]
   ignoredPath: []
   onPreInstall: 
     - path: manifest/templates/pre-install/print-num-job-01.yaml

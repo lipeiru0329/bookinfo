@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v3
+          image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
           imagePullPolicy: IfNotPresent
           command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g \"daemon off;\"']
           ports:
