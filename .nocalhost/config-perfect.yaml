@@ -18,4 +18,4 @@ application:
     - name: DOMAIN
       value: ${DOMAIN:-coding.net}
   services:
-    ${_INCLUDE_:-./perfect-services.yaml | nindent 4}
+    ${_INCLUDE_:-./base-services.yaml | nindent 4}
