@@ -7,26 +7,19 @@
     - name: backend
       install: 
         portForward:   
-          - 39080:9080
+          - 38080:8080
       dev:
         gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-backend.git
         image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
-        command: ["sh",'cd /data/home/user00/nginx/sbin/ && ./nginx -g "daemon off;"']
         shell: bash
         workDir: /data/home/user00/test
         storageClass: ""
-        resources:
-          limits:
-            memory: 3Gi
-            cpu: "3"
-          requests:
-            memory: "100Mi"
-            cpu: "0.1"
-        persistentVolumeDirs:
-          - path: /root
-            capacity: 10Gi
+        command:
+          run:
+            - sh
+            - cd /data/home/user00/nginx/sbin/ && ./nginx -g "daemon off;"
         sync: 
-          type: send
+          type: sendreceive
           filePattern: 
             - ./
           ignoreFilePattern:
@@ -34,7 +27,4 @@
             - ".github"
             - ".idea"
         portForward:
-        - 39080:9080
-        env: 
-        - name: DEBUG
-          value: "true"
+        - 38080:8080
