@@ -11,16 +11,10 @@
       dev:
         gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-backend.git
         image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
+        command: ["/usr/sbin/init", "-c","--"]
         shell: bash
         workDir: /data/home/user00/test
         storageClass: ""
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "0.5"
-          requests:
-            memory: "100Mi"
-            cpu: "0.1"
         persistentVolumeDirs:
           - path: /root
             capacity: 10Gi
