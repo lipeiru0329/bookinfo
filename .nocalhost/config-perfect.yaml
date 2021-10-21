@@ -3,7 +3,7 @@ configProperties:
   envFile: env.dev
 
 application:
-  name: bookinfo
+  name: backend
   manifestType: rawManifest
   resourcePath: ["intl/nocalhost"]
   ignoredPath: []
