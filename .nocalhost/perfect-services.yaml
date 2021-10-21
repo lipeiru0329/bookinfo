@@ -1,18 +1,18 @@
-- name: productpage
+- name: backend
   serviceType: deployment
   dependLabelSelector: 
     jobs:
       - "dep-job"
   containers:
-    - name: productpage
+    - name: backend
       install: 
         portForward:   
           - 39080:9080
       dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-productpage.git
-        image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/python:3.7.7-slim-productpage
+        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-backend.git
+        image: sgccr.ccs.tencentyun.com/intl-backend/intlnh:v5
         shell: bash
-        workDir: /root/nocalhost-dev
+        workDir: /data/home/user00/test
         storageClass: ""
         resources:
           limits:
@@ -41,118 +41,3 @@
         env: 
         - name: DEBUG
           value: "true"
-- name: details
-  serviceType: deployment
-  containers:
-    - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-details.git
-        image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/ruby:2.7.1-slim
-        shell: bash
-        workDir: /root/nocalhost-dev
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "0.5"
-          requests:
-            memory: "100Mi"
-            cpu: "0.1"
-        persistentVolumeDirs:
-          - path: /root
-            capacity: 10Gi
-        sync: 
-          type: send
-          filePattern: 
-            - ./
-          ignoreFilePattern:
-            - ".git"
-            - ".github"
-        env: 
-        - name: DEBUG
-          value: "true"
-- name: ratings
-  serviceType: deployment
-  dependLabelSelector: 
-    pods: 
-      - "productpage"
-      - "app.kubernetes.io/name=productpage"
-    jobs:
-      - "dep-job"
-  containers:
-    - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-ratings.git
-        image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/node:12.18.1-slim
-        shell: bash
-        workDir: /root/nocalhost-dev
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "0.5"
-          requests:
-            memory: "100Mi"
-            cpu: "0.1"
-        persistentVolumeDirs:
-          - path: /root
-            capacity: 10Gi
-        command:
-          build: []
-          run:
-            - node
-            - ratings.js
-          debug:
-            - npm
-            - install
-            - "&&"
-            - node
-            - --inspect-brk
-            - ratings.js
-          hotReloadRun: []
-          hotReloadDebug: []
-        debug:
-          remoteDebugPort: 9229
-        sync: 
-          type: send
-          filePattern: 
-            - ./
-          ignoreFilePattern:
-            - ".git"
-            - ".github"
-            - "node_modules"
-        env: 
-        - name: DEBUG
-          value: "true"
-- name: reviews
-  serviceType: deployment
-  dependLabelSelector: 
-    pods: 
-      - "productpage"
-  containers:
-    - dev:
-        gitUrl: https://e.coding.net/codingcorp/nocalhost/bookinfo-reviews.git
-        image: codingcorp-docker.pkg.coding.net/nocalhost/dev-images/java:latest
-        shell: bash
-        workDir: /root/nocalhost-dev
-        resources:
-          limits:
-            memory: 1Gi
-            cpu: "0.5"
-          requests:
-            memory: "100Mi"
-            cpu: "0.1"
-        persistentVolumeDirs:
-          - path: /root
-            capacity: 10Gi
-        command:
-          build: [ "./gradlew", "build" ]
-          run: [ "./gradlew", "bootRun" ]
-          debug: [ "./gradlew", "bootRun", "--debug-jvm" ]
-        debug:
-          remoteDebugPort: 5005
-        sync: 
-          type: send
-          filePattern: 
-            - ./
-          ignoreFilePattern:
-            - ".git"
-            - ".github"
-            - ".gradle"
-            - "build"
