@@ -52,6 +52,4 @@ spec:
         - name: tmp
           emptyDir: {}
       dnsPolicy: Default
-
 ---
-
